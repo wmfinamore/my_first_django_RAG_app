@@ -7,6 +7,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery
 from rest_framework.filters import SearchFilter
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import BasePermission, IsAuthenticated
+from .permissions import IsOwnerOrReadOnly
 
 
 class IsAdminOrReadOnly(BasePermission):
@@ -43,6 +44,7 @@ class IndexList(ListCreateAPIView):
 class IndexDetail(RetrieveUpdateDestroyAPIView):
     queryset = Index.objects.all()
     serializer_class = IndexSerializer
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
 
 class IndexFileDetail(RetrieveUpdateDestroyAPIView):
