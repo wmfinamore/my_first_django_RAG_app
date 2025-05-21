@@ -7,15 +7,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery
 from rest_framework.filters import SearchFilter
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import BasePermission, IsAuthenticated, IsAdminUser
-from .permissions import IsOwnerOrReadOnly
-
-
-class IsAdminOrReadOnly(BasePermission):
-    #
-    def has_permission(self, request, view):
-        if request.method in ['GET', 'HEAD', 'OPTIONS']:
-            return True
-        return request.user and request.user.is_staff
+from .permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
 
 
 class IndexFilter(FilterSet):
