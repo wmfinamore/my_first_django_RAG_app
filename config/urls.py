@@ -4,6 +4,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('rag/admin/', admin.site.urls),
+    path('rag/api-auth/', include('rest_framework.urls')),
+    path('rag/api/v1/', include('apps.api.urls')),
 ]
 
 

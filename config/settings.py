@@ -32,6 +32,9 @@ INSTALLED_APPS = [
 
     # Third party apps
     'debug_toolbar',
+    'django_filters',
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # App's
     'apps.usuarios',
@@ -144,3 +147,6 @@ INTERNAL_IPS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}

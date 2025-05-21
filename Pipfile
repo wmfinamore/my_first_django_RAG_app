@@ -9,6 +9,9 @@ environs = "*"
 psycopg2 = "*"
 django-debug-toolbar = "*"
 pgvector = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [dev-packages]
 

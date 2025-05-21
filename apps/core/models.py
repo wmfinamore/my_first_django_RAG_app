@@ -21,6 +21,9 @@ class Index(TimeStampedModel):
     user = models.ForeignKey(CustomUser, on_delete=models.PROTECT, help_text='Which user owns the index')
     name = models.CharField(max_length=128)
 
+    class Meta:
+        ordering = ['name',]
+
 
 def get_index_file_location(instance, filename):
     return f'indexes/{instance.index.id}/{filename}'
