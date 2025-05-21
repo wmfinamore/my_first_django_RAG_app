@@ -3,6 +3,7 @@ from rest_framework.authtoken import views
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import (IndexList, IndexDetail, IndexNodeList, IndexNodeDetail, IndexFileDetail, IndexQueryDetail,
                     IndexQueryList)
+from .auth import LoginView, RegisterView
 
 
 urlpatterns = [
@@ -14,6 +15,8 @@ urlpatterns = [
     path('index-nodes/<int:pk>/', IndexNodeDetail.as_view(), name='indexnode-detail'),
     path('index-queries/', IndexQueryList.as_view(), name='indexquery-list'),
     path('index-queries/<int:pk>/', IndexQueryDetail.as_view(), name='indexquery-detail'),
+    path('auth/login/', LoginView.as_view(), name='login'),
+    path('auth/register/', RegisterView.as_view(), name='register'),
 
 ]
 
