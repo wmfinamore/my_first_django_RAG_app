@@ -12,6 +12,7 @@ pgvector = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+django-allauth = "*"
 
 [dev-packages]
 

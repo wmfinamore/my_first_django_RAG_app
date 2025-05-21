@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     # Third party apps
     'debug_toolbar',
     'django_filters',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'rest_framework',
     'rest_framework.authtoken',
 
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'apps.core',
 
 ]
+
+SITE_ID = 1 # usado pelo allauth
 
 AUTH_USER_MODEL = 'usuarios.CustomUser'
 
@@ -151,3 +156,19 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'EXCEPTION_HANDLER': 'apps.core.exceptions.customexception_handler',
 }
+
+# USADO PELO ALLAUTH
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+#ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+#ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+#ACCOUNT_UNIQUE_EMAIL = True
