@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from pgvector.django import VectorField
+from pgvector.django import HnswIndex
 
 
 class TimeStampedModel(models.Model):
@@ -40,7 +41,12 @@ class IndexNode(TimeStampedModel):
     index_file = models.ForeignKey(IndexFile, related_name='nodes', on_delete=models.PROTECT,
                                    help_text='The index file node is associated with')
     content = models.TextField(help_text='Content of the node, consisting of few sentences from the document.')
-    embedding = VectorField(help_text='384 sized embedding for MniLM L6 V2.')
+    embedding = VectorField(dimensions=384, help_text='384 sized embedding for MniLM L6 V2.')
+
+    class Meta:
+        indexes = [
+            HnswIndex(fields=['embedding'], opclasses=["vector_cosine_ops"], name='indexnode_embedding_index'),
+        ]
 
 
 class IndexQuery(TimeStampedModel):

@@ -6,11 +6,10 @@ from rest_framework.views import APIView
 from rest_framework import status
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings as allauth_settings
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
 
-from apps.api import serializers
 
 
 class LoginView(ObtainAuthToken):

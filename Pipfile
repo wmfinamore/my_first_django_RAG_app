@@ -8,11 +8,12 @@ django = "*"
 environs = "*"
 psycopg2 = "*"
 django-debug-toolbar = "*"
-pgvector = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 django-allauth = "*"
+pgvector = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
